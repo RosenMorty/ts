@@ -20,8 +20,25 @@
 //         }
 //     }
 // }
-var PaymentStatus;
-(function (PaymentStatus) {
-    PaymentStatus["Success"] = "success";
-    PaymentStatus["Failed"] = "failed";
-})(PaymentStatus || (PaymentStatus = {}));
+const data = [
+    { group: 1, name: 'a' },
+    { group: 1, name: 'b' },
+    { group: 2, name: 'c' }
+];
+function sortedArr(obj, key) {
+    if (key == 'name') {
+        return data.sort((a, b) => {
+            if (a.name < b.name)
+                return -1;
+            if (a.name > b.name)
+                return 1;
+            return 0;
+        });
+    }
+    else if (key == 'group') {
+        console.log('1: ', obj.filter(x => x.group == 1));
+        console.log('2: ', obj.filter(x => x.group == 2));
+    }
+}
+const sort = sortedArr(data, 'group');
+console.log(sort);
