@@ -265,3 +265,23 @@
 
 // const sort = sortedArr(data, 'group')
 // console.log(sort)
+
+interface IForm {
+    name: string;
+    password: string;
+}
+
+const form: IForm = {
+    name: 'Васяныч',
+    password: '123'
+};
+
+const formValidation: formValid<IForm> = {
+    name: {isValid: true},
+    password: {isValid: false, errorMessage: 'Должен быть длиннее 5 символов'}
+}
+
+type formValid<Type> = {
+    [Property in keyof Type]: {isValid: true} | {isValid: false; errorMessage: string};
+}
+
